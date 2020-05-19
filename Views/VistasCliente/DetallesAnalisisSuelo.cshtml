@@ -1,0 +1,48 @@
+﻿@model HIDROQUIM.Models.AnalisisQuimicoSuelo
+
+@{
+    ViewBag.Title = "DetallesAnalisisSuelo";
+}
+
+<h2>DetallesAnalisisSuelo</h2>
+
+<div>
+    <h4>AnalisisQuimicoSuelo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdSuelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdSuelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Determinacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Determinacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+    </dl>
+    <br />
+
+    <a href="~/Documentos/prueba2.pdf" download="Reporte HIDROQUIM.pdf">
+        Descargar Reporte
+    </a>
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

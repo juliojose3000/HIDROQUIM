@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+<head>
+    <style>
+        a {
+            font-size: 125%;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var elements = document.getElementsByTagName("INPUT");
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].oninvalid = function (e) {
+                    e.target.setCustomValidity("");
+                    if (!e.target.validity.valid) {
+                        e.target.setCustomValidity("Por favor rellene este espacio");
+                    }
+                };
+                elements[i].oninput = function (e) {
+                    e.target.setCustomValidity("");
+                };
+            }
+        })
+    </script>
+    <meta charset="utf-8">
+    <title>SistemaMonitoreo</title>
+    <base href="/">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="~/Content/analisis-suelo.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+</head>
+
+
+<nav class="navbar navbar-dark">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="row">
+                <div class="col-lg-1 col-lg-offset-0"><a class="navbar-brand" href="#"> <img src="~/Images/logo.jpg" style="width:80px ; height: 75px" /></a></div>
+                <div class="col-lg-1 col-lg-offset-1"><a class="navbar-brand" href="#">Sistema Monitoreo</a></div>
+            </div>
+
+
+        </div>
+
+    </div>
+</nav>
+<br /><br /><br />
+<div>
+    <form action="/Proveedor/Crear" class="form-horizontal" method="post">
+        <div class="container col-xs-5 ">
+            <h1 class="display-1">Registro de Proveedores</h1>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="nombre">Identificaci&oacute;n:</label>
+                <div class="col-sm-5">
+                    <input type="text" required class="form-control" id="identificacion" name="identificacion">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Nombre:</label>
+                <div class="col-sm-5">
+                    <input type="text" required class="form-control" id="nombre" name="nombre">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Correo:</label>
+                <div class="col-sm-5">
+                    <input type="text" required class="form-control" id="correo" name="correo">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Telefono Fijo</label>
+                <div class="col-sm-5">
+                    <input type="text" required class="form-control" id="telefonoFijo" name="telefonoFijo">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Telefono Celular</label>
+                <div class="col-sm-5">
+                    <input type="text" required class="form-control" id="telefonoCelular" name="telefonoCelular">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-5">
+                    <button class="form-horizontal btn btn-default" type="submit">Registrar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+</div>
+
+<br><br><br><br>
+
+

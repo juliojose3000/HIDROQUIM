@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<head>
+    <!-- Theme Made By www.w3schools.com - No Copyright -->
+    <title>Bootstrap Theme Simply Me</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="~/Content/pagina-inicial.component.css" rel="stylesheet" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<div>
+
+    <nav class="navbar nav-color">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Sistema Monitoreo</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Contactenos</a></li>
+                    <li><a href="#">Quienes Somos</a></li>
+                    <li><a href="/InicioSeccionCliente/Login">Inicio Sesi&oacute;n Cliente</a></li>
+                    <li><a href="/InicioSesionEncargado/Login">Inicio Sesi&oacute;n Administrativo</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- First Container -->
+    <div class="row">
+        <div class="col-md-4 text-center arriba">
+            <br>
+
+            <img src="~/Images/logo.jpg" width="80%" height="75%" />
+        </div>
+        <div class="col-md-8">
+            <div class="container-fluid bg-1 text-center" style="height:450px">
+
+                <video controls="controls">
+                    <source src="~/Images/videoinicio.mp4" type="video/mp4" autoplay style="height:300px" />
+                </video>
+            </div>
+        </div>
+    </div>
+    <br>
+    <!-- Third Container (Grid) -->
+    <div class="container-fluid bg-3 text-center">
+        <h3 class="margin ">Nuestros trabajos</h3>
+        <div class="row">
+            <div class="col-sm-4 ">
+                <p>Se realizan análisis químicos de aguas potables y aguas residuales</p> <br />
+                <img src="~/Images/analisisagua.jpg" style="-webkit-transform: rotate(90deg) " width="75% " height="75% " alt="Image " />
+            </div>
+            <div class="col-sm-4 ">
+                <p>Una gran labor en análisis de suelos</p> <br />
+
+                <img src="~/Images/analisisuelo.JPG" class="img-responsive izquierda arriba " style="-webkit-transform: rotate(90deg) " width="75% " height="75% " alt="Image " />
+            </div>
+            <div class="col-sm-4 ">
+                <p>Resultados de análisis de aire</p>
+
+                <img src="~/Images/analisisaire.jpg" class="img-responsive izquierda2 " style="width:50% " alt="Image " />
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <!-- Footer -->
+    <footer class="container-fluid footcolor text-center ">
+        <p class="colorHidro ">Hidroquim <a href="# ">www.hidro15R.com</a></p>
+    </footer>
+
+
+</div>

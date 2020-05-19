@@ -1,0 +1,211 @@
+﻿@model HIDROQUIM.Models.Entidad
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="~/Content/FormularioGenerico.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<nav class="navbar navbar-dark">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="row">
+                <div class="col-lg-1 col-lg-offset-0"><a class="navbar-brand" href="#"> <img src="~/Images/logo.jpg" style="width:80px ; height: 75px" /></a></div>
+                <div class="col-lg-1 col-lg-offset-1"><a class="navbar-brand" href="#">Sistema Monitoreo</a></div>
+            </div>
+
+
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-left">
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle"
+                       data-toggle="dropdown" href="#">
+                        Cliente Entidad <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Entidad/Create">Agregar Entidad</a></li>
+                        <li><a href="/Entidad/Index">Gestionar Entidad</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle"
+                       data-toggle="dropdown" href="#">
+                        Cliente Persona <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Persona/Create">Agregar Cliente </a></li>
+                        <li><a href="/Persona/Index">Gestionar Cliente</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+
+
+
+        </div>
+    </div>
+</nav>
+<br />
+<br />
+
+<h2>Modificar entidad</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+
+    <div class="form-horizontal">
+        <h4>Entidad</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="form-group">
+                <label class="control-label col-md-2">Cédula Jurídica</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CedulaJuridica, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CedulaJuridica, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Código Información Contacto</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.InformacionContacto.IdInformacionContacto, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.InformacionContacto.IdInformacionContacto, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Correo electrónico</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.InformacionContacto.Correo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.InformacionContacto.Correo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Teléfono Celular</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.InformacionContacto.TelefonoCelular, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.InformacionContacto.TelefonoCelular, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Teléfono Fijo</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.InformacionContacto.TelefonoFijo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.InformacionContacto.TelefonoFijo, "", new { @class = "text-danger" })
+                </div>
+            </div> <div class="form-group">
+                <label class="control-label col-md-2">Código del Cliente</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Cliente.IdCliente, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Cliente.IdCliente, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Nombre del Cliente</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Cliente.Nombre_cliente, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Cliente.Nombre_cliente, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Nombre de usuario</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Cliente.Username, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Cliente.Username, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Contraseña</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Cliente.Password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Cliente.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-5">Información del Responsable Legal</label>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Código del Responsable Legal</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ResponsableLegal.IdReponsableLegal, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ResponsableLegal.IdReponsableLegal, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Código del Cédula</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ResponsableLegal.Cedula, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ResponsableLegal.Cedula, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Nombre</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ResponsableLegal.NombreCompleto, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ResponsableLegal.NombreCompleto, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Código de la Información Contacto</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ResponsableLegal.InformacionContacto.IdInformacionContacto, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ResponsableLegal.InformacionContacto.IdInformacionContacto, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Correo electrónico</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ResponsableLegal.InformacionContacto.Correo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ResponsableLegal.InformacionContacto.Correo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Teléfono Fijo</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ResponsableLegal.InformacionContacto.TelefonoFijo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ResponsableLegal.InformacionContacto.TelefonoFijo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Teléfono Celular</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ResponsableLegal.InformacionContacto.TelefonoCelular, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ResponsableLegal.InformacionContacto.TelefonoCelular, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+<div>
+    @Html.ActionLink("Volver a la lista", "Index")
+</div>
+<br><br><br><br>
+<!-- Footer -->
+<footer class="container-fluid footcolor text-center ">
+    <p class="colorHidro ">Hidroquim <a href="# ">www.hidro15R.com</a></p>
+</footer>
+

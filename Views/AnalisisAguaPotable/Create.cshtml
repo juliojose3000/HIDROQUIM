@@ -1,0 +1,716 @@
+﻿@model HIDROQUIM.Models.AnalisisQuimicoAguaPotable
+
+
+@{
+    ViewBag.Title = "Create";
+}
+@{
+    var clients = (List<HIDROQUIM.Models.Cliente>)ViewData["clientes"];
+}
+
+
+
+<head>
+
+    <meta charset="utf-8">
+    <title>SistemaMonitoreo</title>
+
+    <link href="~/Content/insertar-aire.component.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.6.3.min.js"></script>
+    <link href="~/Content/hidroquim2.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <title>Agregar Analisis</title>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var elements = document.getElementsByTagName("INPUT");
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].oninvalid = function (e) {
+                    e.target.setCustomValidity("");
+                    if (!e.target.validity.valid) {
+                        e.target.setCustomValidity("Por favor rellene este espacio");
+                    }
+                };
+                elements[i].oninput = function (e) {
+                    e.target.setCustomValidity("");
+                };
+            }
+        })
+    </script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            var i = 1;
+
+
+
+
+            $("#add_row").click(function () {
+
+                var markup = "<tr id='delete_row" + i + "'><td><input type='text' name='Parametro_lv1_" + i + "' placeholder='Parametro' class='form - control' /></td><td><input type='text' name='Unidad_lv1_" + i + "' placeholder='Unidad' class='form - control' /></td><td><input type='text' name='Obtenido_lv1_" + i + "' placeholder='Obtenido' class='form - control' /></td><td><input type='text' name='Recomendado_lv1_" + i + "' placeholder='Recomendado' class='form - control' /></td><td><input type='text' name='Maximo_lv1_" + i + "' placeholder='Maximo' class='form - control' /></td><td><button name='delete_row" + i + "' class='button_cancel'>Eliminar</button></td></tr>";
+
+                $("#tablaNivel1").append(markup);
+
+                $("button[name='delete_row" + i + "']").click(function () {
+                    var x = $(this).attr("name");
+                    $("#" + x).remove();
+                    return false;
+                });
+
+                i++;
+
+                return false;
+            });
+
+
+            $("#add_row_level_2").click(function () {
+
+                var markup = "<tr id='delete_row_level_2" + i + "'><td><input type='text' name='Parametro_lv2_" + i + "' placeholder='Parametro' class='form - control' /></td><td><input type='text' name='Unidad_lv2_" + i + "' placeholder='Unidad' class='form - control' /></td><td><input type='text' name='Obtenido_lv2_" + i + "' placeholder='Obtenido' class='form - control' /></td><td><input type='text' name='Recomendado_lv2_" + i + "' placeholder='Recomendado' class='form - control' /></td><td><input type='text' name='Maximo_lv2_" + i + "' placeholder='Maximo' class='form - control' /></td><td><button name='delete_row_level_2" + i + "' class='button_cancel'>Eliminar</button></td></tr>";
+
+                $("#tablaNivel2").append(markup);
+
+                $("button[name='delete_row_level_2" + i + "']").click(function () {
+                    var x = $(this).attr("name");
+                    $("#" + x).remove();
+                    return false;
+                });
+
+                i++;
+
+                return false;
+            });
+
+
+
+            $("#add_row_level_3").click(function () {
+
+                var markup = "<tr id='delete_row_level_3" + i + "'><td><input type='text' name='Parametro_lv3_" + i + "' placeholder='Parametro' class='form - control' /></td><td><input type='text' name='Unidad_lv3_" + i + "' placeholder='Unidad' class='form - control' /></td><td><input type='text' name='Obtenido_lv3_" + i + "' placeholder='Obtenido' class='form - control' /></td><td><input type='text' name='Recomendado_lv3_" + i + "' placeholder='Recomendado' class='form - control' /></td><td><input type='text' name='Maximo_lv3_" + i + "' placeholder='Maximo' class='form - control' /></td><td><button name='delete_row_level_3" + i + "' class='button_cancel'>Eliminar</button></td></tr>";
+
+                $("#tablaNivel3").append(markup);
+
+                $("button[name='delete_row_level_3" + i + "']").click(function () {
+                    var x = $(this).attr("name");
+                    $("#" + x).remove();
+                    return false;
+                });
+
+                i++;
+
+                return false;
+            });
+
+
+
+
+
+
+            $("a[name='buttonClient']").click(function () {
+                var idButton = this.id;
+                var clientData = idButton.split(";")
+                $("#nameClientSelected").text(clientData[0]);
+                $("#idClientSelected").val(clientData[1]);
+                modal.style.display = "none";
+                return false;
+
+            });
+
+            $("#buttonNombreClienteABuscar").click(function () {
+
+                var clientName = $("#nombreClienteABuscar").val();
+
+                $.ajax({
+                    url: "/AnalisisAguaResidual/GetClientByName",
+                    type: "POST",
+                    dataType: "json",
+                    data: '{ clientName: "' + clientName + '" }',
+                    contentType: "application/json",
+                    success: function (data) {
+                        $("#customers").find("tr:gt(0)").remove();
+                        $.each(data, function (index, element) {
+                            $("table tbody").append("<tr><th>" + element.Nombre_cliente + "</th><th>" + element.Username + "</th><th>" + element.Password + "</th><th class='button_selectClient'><a id='" + element.Nombre_cliente + ";" + element.IdCliente + "' class='btn btn-success' name='buttonClient'>Seleccionar</a></th></tr>");
+
+                        });
+
+
+                        $("a[name='buttonClient']").click(function () {
+                            var idButton = this.id;
+                            var clientData = idButton.split(";")
+                            $("#nameClientSelected").text(clientData[0]);
+                            $("#idClientSelected").val(clientData[1]);
+                            modal.style.display = "none";
+                            return false;
+
+                        });
+
+
+
+
+                    }, error: function (data) {
+                        alert("alamierdatodo");
+                    }
+
+                });
+
+                return false;
+
+            });
+
+            // Get the modal
+            var modal = document.getElementById('myModal');
+
+            // Get the button that opens the modal
+            var btn = document.getElementById("myBtn");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementById("close_modalClientes");
+
+
+            // When the user clicks on the button, open the modal
+            btn.onclick = function () {
+                modal.style.display = "block";
+                return false;
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            //---------------------------NIVEL 1---------------------------------//
+
+            // Get the modal
+            var modal1 = document.getElementById('modal_nivel1');
+
+            $("#aceptar_lvl1").click(function () {
+               
+                    modal1.style.display = "none";
+                
+
+                return false;
+            });
+
+            // When the user clicks on the button, open the modal
+            $("#btn_modal_nivel1").click(function () {
+                modal1.style.display = "block";
+                return false;
+            });
+
+            // When the user clicks on <span> (x), close the modal
+            $("#closeModal_nivel1").click(function () {
+                modal1.style.display = "none";
+            });
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target == modal1) {
+                    modal1.style.display = "none";
+                }
+            }
+
+
+            //---------------------------NIVEL 2---------------------------------//
+
+            // Get the modal
+            var modal2 = document.getElementById('modal_nivel2');
+
+            $("#aceptar_lvl2").click(function () {
+                modal2.style.display = "none";
+                return false;
+            });
+
+            // When the user clicks on the button, open the modal
+            $("#btn_modal_nivel2").click(function () {
+                modal2.style.display = "block";
+                return false;
+            });
+
+            // When the user clicks on <span> (x), close the modal
+            $("#closeModal_nivel2").click(function () {
+                modal2.style.display = "none";
+            });
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target == modal2) {
+                    modal2.style.display = "none";
+                }
+            }
+
+
+            //---------------------------NIVEL 3---------------------------------//
+
+            // Get the modal
+            var modal3 = document.getElementById('modal_nivel3');
+
+            $("#aceptar_lvl3").click(function () {
+                modal3.style.display = "none";
+                return false;
+            });
+
+            // When the user clicks on the button, open the modal
+            $("#btn_modal_nivel3").click(function () {
+                modal3.style.display = "block";
+                return false;
+            });
+
+            // When the user clicks on <span> (x), close the modal
+            $("#closeModal_nivel3").click(function () {
+                modal3.style.display = "none";
+            });
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target == modal3) {
+                    modal3.style.display = "none";
+                }
+            }
+
+
+
+
+        });
+
+    </script>
+
+    <style>
+
+        .contenedorDelForm {
+            padding: 15px;
+        }
+    </style>
+
+
+</head>
+
+
+<body>
+
+
+    <nav class="navbar navbar-dark">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Sistema Monitoreo</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">.</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <br><br><br>
+        <div class="col-md-7 col-md-offset-0">
+            <div class="panel panel-login">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <a href="#" class="active" id="login-form-link">Ingresar nuevo analisis quimico de agua potable</a>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-15">
+
+                            <form action="/AnalisisAguaPotable/Create" class="form-horizontal" method="post">
+
+
+                                <div class="col-md-11 col-md-offset-0">
+
+                                    <div class="contenedorDelForm">
+
+
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <span class="label other">Fecha muestreo:</span>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input required type="date" name="fecha_muestreo" id="Fecha" tabindex="1" class="form-calendar" placeholder="Fecha" value="">
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label class="label other" for="FechaResultado">Fecha de finalización:</label>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input required type="date" class="form-calendar" id="FechaResultado" name="FechaResultado">
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                        <!------------------------------------NIVEL 1----------------------------------------------->
+
+
+
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <span name="leves" id="levels" class="label other">Parametros del nivel 1:</span>
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <button id="btn_modal_nivel1" class="button_verificarCIIU">Agregar</button>
+
+                                                    <!-- The Modal -->
+                                                    <div id="modal_nivel1" class="modal">
+
+                                                        <!-- Modal content -->
+                                                        <div class="modal-content">
+                                                            <h2>Parametros del nivel 1:</h2>
+
+                                                            <span id="closeModal_nivel1" class="close">&times;</span>
+
+                                                            <table class="table table-bordered table-hover" id="tablaNivel1">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="encabezado">
+                                                                            Parametro
+                                                                        </th>
+                                                                        <th class="encabezado">
+                                                                            Unidad
+                                                                        </th>
+                                                                        <th class="encabezado">
+                                                                            Valor obtenido
+                                                                        </th>
+                                                                        <th class="encabezado">
+                                                                            Valor recomendado
+                                                                        </th>
+                                                                        <th class="encabezado">
+                                                                            Valor maximo admisible
+                                                                        </th>
+                                                                        <th class="encabezado">
+                                                                            Eliminar
+                                                                        </th>
+
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody></tbody>
+                                                            </table>
+                                                            <button id="aceptar_lvl1" class="button_verificarCIIU">Aceptar</button>
+                                                            <button id="add_row" class="button_verificarCIIU">Agregar parametro</button>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <!------------------------------------NIVEL 2----------------------------------------------->
+
+
+
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <span name="leves" id="levels" class="label other">Parametros del nivel 2:</span>
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <button id="btn_modal_nivel2" class="button_verificarCIIU">Agregar</button>
+
+                                                    <!-- The Modal -->
+                                                    <div id="modal_nivel2" class="modal">
+
+                                                        <!-- Modal content -->
+                                                        <div class="modal-content">
+                                                            <h2>Parametros del nivel 2:</h2>
+
+                                                            <span id="closeModal_nivel2" class="close">&times;</span>
+
+                                                            <table class="table table-bordered table-hover" id="tablaNivel2">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="encabezado">
+                                                                            Parametro
+                                                                        </th>
+                                                                        <th class="encabezado">
+                                                                            Unidad
+                                                                        </th>
+                                                                        <th class="encabezado">
+                                                                            Valor obtenido
+                                                                        </th>
+                                                                        <th class="encabezado">
+                                                                            Valor recomendado
+                                                                        </th>
+                                                                        <th class="encabezado">
+                                                                            Valor maximo admisible
+                                                                        </th>
+                                                                        <th class="encabezado">
+                                                                            Eliminar
+                                                                        </th>
+
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody></tbody>
+                                                            </table>
+                                                            <button id="aceptar_lvl2" class="button_verificarCIIU">Aceptar</button>
+                                                            <button id="add_row_level_2" class="button_verificarCIIU">Agregar parametro</button>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                        <!------------------------------------NIVEL 3----------------------------------------------->
+
+
+
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <span name="leves" id="levels" class="label other">Parametros del nivel 3:</span>
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <button id="btn_modal_nivel3" class="button_verificarCIIU">Agregar</button>
+
+                                                    <!-- The Modal -->
+                                                    <div id="modal_nivel3" class="modal">
+
+                                                        <!-- Modal content -->
+                                                        <div class="modal-content">
+                                                            <h2>Parametros del nivel 3:</h2>
+
+                                                            <span id="closeModal_nivel3" class="close">&times;</span>
+
+                                                            <table class="table table-bordered table-hover" id="tablaNivel3">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="encabezado">
+                                                                            Parametro
+                                                                        </th>
+                                                                        <th class="encabezado">
+                                                                            Unidad
+                                                                        </th>
+                                                                        <th class="encabezado">
+                                                                            Valor obtenido
+                                                                        </th>
+                                                                        <th class="encabezado">
+                                                                            Valor recomendado
+                                                                        </th>
+                                                                        <th class="encabezado">
+                                                                            Valor maximo admisible
+                                                                        </th>
+                                                                        <th class="encabezado">
+                                                                            Eliminar
+                                                                        </th>
+
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody></tbody>
+                                                            </table>
+                                                            <button id="aceptar_lvl3" class="button_verificarCIIU">Aceptar</button>
+                                                            <button id="add_row_level_3" class="button_verificarCIIU">Agregar parametro</button>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                        <!----------------------------------------------------------------------------------->
+
+
+
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <span name="nameClientSelected" id="nameClientSelected" class="label other">Cliente:</span>
+                                                    <input required type="text" name="idClientSelected" id="idClientSelected" hidden />
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <button id="myBtn" class="button_verificarCIIU">Seleccionar cliente</button>
+
+                                                    <!-- The Modal -->
+                                                    <div id="myModal" class="modal">
+
+                                                        <!-- Modal content -->
+                                                        <div class="modal-content">
+                                                            <h2>Clientes existentes:</h2>
+
+                                                            <input class="form-control" type="text" placeholder="Nombre del cliente" id="nombreClienteABuscar" />
+                                                            <button id="buttonNombreClienteABuscar" class="button_verificarCIIU">Buscar</button>
+
+                                                            <span id="close_modalClientes" class="close">&times;</span>
+                                                            <table id="customers">
+
+                                                                <tr>
+                                                                    <th class="encabezado">Nombre completo</th>
+                                                                    <th class="encabezado">Nombre de usuario</th>
+                                                                    <th class="encabezado">Contraseña</th>
+                                                                    <th class="encabezado"></th>
+                                                                </tr>
+
+                                                                @foreach (var client in clients)
+                                                                {
+                                                                    <tr>
+                                                                        <th>@client.Nombre_cliente</th>
+                                                                        <th>@client.Username</th>
+                                                                        <th>@client.Password</th>
+                                                                        <th class="button_selectClient"><a id="@client.Nombre_cliente;@client.IdCliente" name="buttonClient" class="btn btn-success">Seleccionar</a></th>
+
+                                                                    </tr>
+                                                                }
+                                                            </table>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="label other" id="labelCliente" style="display:none" name="labelCliente" for="pwd">Cliente escogido:</label>
+                                            <div class="col-sm-5">
+                                                <input required type="hidden" class="form-control" id="nombreCliente" name="nombreCliente">
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label class="label other" for="UbicacionGeografica">Ubicación geográfica:</label>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input required type="text" class="form-control" id="terriorioGeografico" name="terriorioGeografico">
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label for="ResultadoAnalisisAguaPotable" class="label other">Estado:</label>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input required type="text" class="form-control" id="EstadoAnalisisAguaPotable" name="EstadoAnalisisAguaPotable">
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label for="ResultadoAnalisisAguaPotable" class="label other">Resultado:</label>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input required type="text" class="form-control" id="ResultadoAnalisisAguaPotable" name="ResultadoAnalisisAguaPotable">
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+
+
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <input type="submit" name="Guardar" id="Guardar" tabindex="4" class="button_accept" value="Guardar">
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <input required type="reset" name="Cancelar" id="Cancelar" tabindex="4" class="button_cancel" value="Cancelar">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+
+                                    </div>
+
+                                </div>
+
+
+
+
+
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 text-center">
+
+            <img src="~/Images/air-element.jpg" style="width:80% " alt="Image" />
+        </div>
+    </div>
+
+    <br><br><br><br>
+    <!-- Footer -->
+    <footer class="container-fluid footcolor text-center ">
+        <p class="colorHidro ">Hidroquim <a href="# ">www.hidro15R.com</a></p>
+    </footer>
+
+</body>
+
+

@@ -1,0 +1,83 @@
+﻿@model HIDROQUIM.Models.AnalisisQuimicoAguaPotable
+
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>Seguro que desea eliminar el analisis </h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            *Fecha Muetreo
+        </dt>
+
+        <dt>
+            @Html.DisplayFor(model => model.AnalisisQuimico.FechaMuestreo)
+        </dt>
+
+        <!---------------------------------------------------------------------->
+
+        <dt>
+            *Fecha registro automático
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnalisisQuimico.FechaRegistroSistemaAutomatico)
+        </dd>
+
+
+        <!------------------------------------------------------------------->
+
+
+        <dt>
+            *Fecha resultado
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnalisisQuimico.FechaResultado)
+        </dd>
+
+
+        <!------------------------------------------------------------------->
+
+        <dt>
+            *Ubicación geográfica
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnalisisQuimico.UbicacionGeografica)
+        </dd>
+
+        <!-------------------------------------------------------------------->
+
+        <dt>
+            Resultado
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Resultado)
+        </dd>
+
+        <!---------------------------------------------------------------------->
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Elminar" class="btn btn-default" />
+            @Html.ActionLink("Volver al listado", "Index")
+        </div>
+    }
+</div>
+
+<footer class="container-fluid footcolor text-center ">
+    <p class="colorHidro ">Hidroquim <a href="# ">www.hidro15R.com</a></p>
+</footer>

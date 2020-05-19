@@ -1,0 +1,158 @@
+﻿@model HIDROQUIM.Models.Equipo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="~/Content/FormularioGenerico.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<nav class="navbar navbar-dark">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="row">
+                <div class="col-lg-1 col-lg-offset-0"><a class="navbar-brand" href="#"> <img src="~/Images/logo.jpg" style="width:80px ; height: 75px" /></a></div>
+                <div class="col-lg-1 col-lg-offset-1"><a class="navbar-brand" href="#">Sistema Monitoreo</a></div>
+            </div>
+
+
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-left">
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle"
+                       data-toggle="dropdown" href="#">
+                        Reactivos <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Reactivo/Create">Agregar Reactivo</a></li>
+                        <li><a href="/Reactivo/Index">Gestionar Reactivo</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle"
+                       data-toggle="dropdown" href="#">
+                        Equipo <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Equipo/Create">Agregar Equipo</a></li>
+                        <li><a href="/Equipo/Index">Gestionar Equipo</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+
+
+
+        </div>
+    </div>
+</nav>
+<br /><br />
+
+<div>
+    <h4>Equipo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Producto.IdProducto)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Producto.IdProducto)
+        </dd>
+
+        <dt>
+            Nombre Producto
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Producto.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Producto.Descripcion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Producto.Descripcion)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Producto.Precio)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Producto.Precio)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CantidadDisponible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CantidadDisponible)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdEquipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdEquipo)
+        </dd>
+        <dt>
+            Categor&iacute;a
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Producto.Categoria.Nombre)
+        </dd>
+        <dt>
+            Identificaci&oacute;n Proveedor
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Producto.Proveedor.Identificacion)
+        </dd>
+
+        <dt>
+            Nombre del Proveedor
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Producto.Proveedor.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Producto.Proveedor.InformacionContacto.TelefonoCelular)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Producto.Proveedor.InformacionContacto.TelefonoCelular)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Producto.Proveedor.InformacionContacto.Correo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Producto.Proveedor.InformacionContacto.Correo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Producto.Proveedor.InformacionContacto.TelefonoFijo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Producto.Proveedor.InformacionContacto.TelefonoFijo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdEquipo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
