@@ -1,0 +1,199 @@
+.button_cancel {
+    background-color: #ff0000;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0px;
+}
+
+.button_accept {
+    background-color: #07e223;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 20px;
+}
+
+.form-control {
+    width: 250px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Buscar analisis de agua residual */
+
+.form-calendar {
+    width: 250px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Insertar analisis de agua residual*/
+
+.button_verificarCIIU {
+    background-color: #008CBA;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0px;
+}
+
+.mensaje {
+    color: red;
+    font-size: 20px;
+}
+
+.form-group {
+    margin-left: 15px;
+}
+
+.btn-success {
+    background-color: #008CBA; /* Green */
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+/*Table customers*/
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.encabezado {
+    background-color: #07e223;
+    text-align: center;
+    font-style: inherit;
+}
+
+.button_selectClient {
+    text-align: center;
+}
+
+.label {
+    width: 250px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: white;
+    font-family: Arial;
+    font-size: 16px;
+    text-align: left;
+}
+
+.success {
+    background-color: #4CAF50;
+}
+/* Green */
+.info {
+    background-color: #2196F3;
+}
+/* Blue */
+.warning {
+    background-color: #ff9800;
+}
+/* Orange */
+.danger {
+    background-color: #f44336;
+}
+/* Red */
+.other {
+    background-color: #e7e7e7;
+    color: black;
+}
+/* Gray */
+
+/*---------------------INDEX-----------------------*/
+
+.btn-delete {
+    background-color: #ff0000; /* Green */
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 5px;
+}

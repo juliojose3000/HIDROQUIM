@@ -1,0 +1,54 @@
+﻿.bg-grey {
+    background-color: #f6f6f6;
+}
+
+.logo-small {
+    color: #416D05;
+    font-size: 60px;
+}
+
+.logo {
+    color: #f4511e;
+    font-size: 200px;
+}
+
+.navbar {
+    margin-bottom: 0;
+    background-color: #59B2E0;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+    font-family: Montserrat, sans-serif;
+}
+
+    .navbar li,
+    .navbar .navbar-brand {
+        color: #fff !important;
+    }
+
+.navbar-nav li a:hover,
+.navbar-nav li.active {
+    color: #59B2E0 !important;
+    background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}
+
+h2 {
+    font-size: 1.1em;
+    margin-top: 2em;
+    text-align: center;
+}
+
+main {
+    width: 80%;
+    margin: auto;
+}
+
+

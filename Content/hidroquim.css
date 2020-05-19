@@ -1,0 +1,70 @@
+        
+        /*General*/
+
+        .button_cancel {
+            background-color: #ff0000;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            padding: 12px 28px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 0px;
+        }
+
+        .button_accept {
+            background-color: #07e223;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            padding: 12px 28px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-right: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* Buscar analisis de agua residual */
+
+        .form-calendar {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* Insertar analisis de agua residual*/
+
+        .button_verificarCIIU {
+            background-color: #008CBA; /* Green */
+            border: none;
+            border-radius: 4px;
+            color: white;
+            padding: 12px 28px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 0px;
+        }
+
+        .mensaje {
+            color: red;
+            font-size: 20px;
+        }
